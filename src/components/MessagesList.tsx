@@ -15,12 +15,12 @@ const MessageList: React.VFC = () => {
   const { state: currentChannelMessages, setState: setCurrentChannelMessages } = useContext(CurrentChannelMessagesContext)
 
   const [FetchMoreMessages, { loading, error, data }] = useLazyQuery(FETCH_MORE_MESSAGES)
-  const getUser = (userId: string) => Users.find((user) => user.id === userId)
+  const getUser = (userId: string) => Users.find((user) => user.userId === userId)
 
   const handleScroll = (e: React.FormEvent<HTMLElement>) => {
     const target = e.target as Element
     if (target.scrollTop === 0) {
-      FetchMoreMessages({ variables: { channelId: currentChannel, messageId: currentChannelMessages[0].id, old: true } })
+      FetchMoreMessages({ variables: { channelId: currentChannel, messageId: currentChannelMessages[0].messageId, old: true } })
     }
   }
 
@@ -28,7 +28,7 @@ const MessageList: React.VFC = () => {
     if (!data) return
 
     const fetchedMessages = data.fetchMoreMessages.map(
-      (message: Message) => new Message(message.id, message.text, message.userId, message.channelId, message.createdAt)
+      (message: Message) => new Message(message.messageId, message.text, message.userId, message.channelId, message.datetime)
     )
     setCurrentChannelMessages([...fetchedMessages, ...currentChannelMessages])
   }, [FetchMoreMessages, data])
@@ -42,17 +42,17 @@ const MessageList: React.VFC = () => {
     <ul id="scroll" tw="p-5 h-5/6 overflow-auto flex-col-reverse" onScroll={handleScroll}>
       {currentChannelMessages.map((message: Message) => (
         <li
-          key={`message_${currentChannel}${message.id}`}
-          css={[tw`my-5 flex items-stretch`, message.userId === currentUser.id && tw`flex-row-reverse`]}
+          key={`message_${currentChannel}${message.messageId}`}
+          css={[tw`my-5 flex items-stretch`, message.userId === currentUser.userId && tw`flex-row-reverse`]}
         >
-          <div css={[tw`flex flex-col my-2 items-center`, message.userId === currentUser.id ? tw`ml-2.5` : tw`mr-2.5`]}>
-            <img src={getUser(message.userId)?.profilePictureUrl} alt={message.id} tw="hidden sm:block w-[48px] h-[48px]" />
+          <div css={[tw`flex flex-col my-2 items-center`, message.userId === currentUser.userId ? tw`ml-2.5` : tw`mr-2.5`]}>
+            <img src={getUser(message.userId)?.profilePictureUrl} alt={message.messageId} tw="hidden sm:block w-[48px] h-[48px]" />
             <div>{message.userId}</div>
           </div>
           <div tw="bg-bluegray-200 dark:bg-bluegray-500 w-8/12 rounded-3xl shadow-xl px-5 py-4 relative">
             <div>{message.text}</div>
           </div>
-          <div css={[tw`text-xs flex items-center`, message.userId === currentUser.id ? tw`mr-2.5` : tw`ml-2.5`]}>{message.time()}</div>
+          <div css={[tw`text-xs flex items-center`, message.userId === currentUser.userId ? tw`mr-2.5` : tw`ml-2.5`]}>{message.time()}</div>
         </li>
       ))}
     </ul>

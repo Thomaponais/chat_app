@@ -23,8 +23,8 @@ const MessageBox: React.VFC = () => {
     e.preventDefault()
     if (currentMessage.length === 0) return
 
-    const newMessage = new Message(uuidv4(), currentMessage, currentUser.id, channelId, new Date().toISOString())
-    await postMessage({ variables: { channelId, userId: currentUser.id, text: currentMessage } })
+    const newMessage = new Message(uuidv4(), currentMessage, currentUser.userId, channelId, new Date().toISOString())
+    await postMessage({ variables: { channelId, userId: currentUser.userId, text: currentMessage } })
     if (data) {
       setMessages([...messages, newMessage])
       setCurrentMessage('')

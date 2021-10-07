@@ -12,9 +12,9 @@ const Menu: React.VFC = () => {
       <nav>
         <ul>
           {Channels.map((channel) => (
-            <li key={`channel_${channel.id}`} tw="w-full h-12 flex items-center font-semibold p-2">
+            <li key={`channel_${channel.channelId}`} tw="w-full h-12 flex items-center font-semibold p-2">
               <span tw="text-gray-700 mr-1">#</span>
-              <Link to={`/${channel.id}`} onClick={() => setState(channel.id)}>
+              <Link to={`/${channel.channelId}`} onClick={() => setState(channel.channelId)}>
                 {channel.name}
               </Link>
             </li>

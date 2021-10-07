@@ -1,5 +1,5 @@
 export class Message {
-  id: string
+  messageId: string
 
   text!: string
 
@@ -7,18 +7,18 @@ export class Message {
 
   channelId!: string
 
-  createdAt!: string
+  datetime!: string
 
-  constructor(id: string, text: string, userId: string, channelId: string, createdAt: string) {
-    this.id = id
+  constructor(messageId: string, text: string, userId: string, channelId: string, datetime: string) {
+    this.messageId = messageId
     this.text = text
     this.userId = userId
     this.channelId = channelId
-    this.createdAt = createdAt
+    this.datetime = datetime
   }
 
   time(): string {
-    const date = new Date(this.createdAt)
+    const date = new Date(this.datetime)
     return `${date.getHours()}:${date.getMinutes()}`
   }
 }

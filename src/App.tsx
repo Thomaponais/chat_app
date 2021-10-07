@@ -16,7 +16,7 @@ import ChannelView from './components/ChannelView'
 const App: React.VFC = () => {
   const [darkMode, setDarkMode] = useLocalStorage<boolean>('dark_mode', window.matchMedia('(prefers-color-scheme: dark)').matches)
   const [currentUser, setCurrentUser] = useLocalStorage<User>('current_user', Users[0])
-  const [currentChannelId, setCurrentChannelId] = useLocalStorage<string>('current_channel_id', Channels[0].id)
+  const [currentChannelId, setCurrentChannelId] = useLocalStorage<string>('current_channel_id', Channels[0].channelId)
   const [messages, setMessages] = useState<Message[]>([])
 
   return (

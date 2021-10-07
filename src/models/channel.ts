@@ -1,10 +1,10 @@
 export class Channel {
-  id: string
+  channelId: string
 
   name: string
 
-  constructor(id: string, name: string) {
-    this.id = id
+  constructor(channelId: string, name: string) {
+    this.channelId = channelId
     this.name = name
   }
 }

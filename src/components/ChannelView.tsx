@@ -20,7 +20,7 @@ const ChannelView: React.VFC = () => {
       console.log('Error')
     } else {
       const fetchedMessages = data.fetchLatestMessages.map(
-        (message: Message) => new Message(message.id, message.text, message.userId, message.channelId, message.createdAt)
+        (message: Message) => new Message(message.messageId, message.text, message.userId, message.channelId, message.datetime)
       )
       setCurrentChannelMessages(fetchedMessages)
     }

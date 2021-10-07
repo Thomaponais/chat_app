@@ -6,6 +6,6 @@ export type CurrentChannelContextType = {
   setState: React.Dispatch<React.SetStateAction<string>>
 }
 
-const CurrentChannelContext = createContext<CurrentChannelContextType>({ state: Channels[0].id, setState: () => {} })
+const CurrentChannelContext = createContext<CurrentChannelContextType>({ state: Channels[0].channelId, setState: () => {} })
 
 export default CurrentChannelContext

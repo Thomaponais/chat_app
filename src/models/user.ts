@@ -1,10 +1,10 @@
 export class User {
-  id: string
+  userId: string
 
   profilePictureUrl: string
 
-  constructor(id: string, profilePictureUrl: string) {
-    this.id = id
+  constructor(userId: string, profilePictureUrl: string) {
+    this.userId = userId
     this.profilePictureUrl = profilePictureUrl
   }
 }

@@ -5,7 +5,7 @@ import tw, { css } from 'twin.macro'
 import { User } from '../models/user'
 
 type Props = {
-  elements: { id: string }[]
+  elements: { userId: string }[]
   context: React.Context<{
     state: User
     setState: React.Dispatch<React.SetStateAction<User>>

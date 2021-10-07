@@ -12,7 +12,7 @@ const FETCH_LATEST_MESSAGES = gql`
       text
       userId
       channelId
-      createdAt
+      datetime
     }
   }
 `
@@ -24,7 +24,7 @@ export const FETCH_MORE_MESSAGES = gql`
       text
       userId
       channelId
-      createdAt
+      datetime
     }
   }
 `
@@ -32,7 +32,7 @@ export const FETCH_MORE_MESSAGES = gql`
 export const POST_MESSAGE = gql`
   mutation ($channelId: String!, $userId: String!, $text: String!) {
     postMessage(userId: $userId, channelId: $channelId, text: $text) {
-      createdAt
+      datetime
     }
   }
 `

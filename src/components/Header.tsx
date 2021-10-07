@@ -29,7 +29,7 @@ const Header: React.VFC = () => {
           />
         </svg>
         <Selectbox context={CurrentUserContext} elements={Users} />
-        <img src={currentUser.profilePictureUrl} alt={currentUser.id} tw="hidden sm:block w-[48px] h-[48] ml-2" />
+        <img src={currentUser.profilePictureUrl} alt={currentUser.userId} tw="hidden sm:block w-[48px] h-[48] ml-2" />
       </div>
     </div>
   )
